@@ -5,13 +5,16 @@ public class TestSorts
     Sorts sort = new Sorts();
     testSelectionSort(sort);
     testMergeSort(sort);
+    testQuickSort(sort);
   }
 
   public static void testSelectionSort(Sorts sort)
   {
     int[] arr1 = {5, 4, 3, 2, 1};
-    int[] arr2 = {1, 2, 3, 4, 5};
+    int[] arr2 = {3, 2, 4, 1};
     int[] arr3 = {9, 5, -3, 0, 10};
+    int[] arr4 = {1, -1};
+    int[] arr5 = {0, 1, -1};
 
     System.out.println("\n***** Selection Sort Tests *****");
     System.out.println("Test 1:");
@@ -21,13 +24,23 @@ public class TestSorts
 
     System.out.println("\nTest 2:");
     printArr(arr2);
-    sort.selectionSort(arr2, 5);
+    sort.selectionSort(arr2, 4);
     printArr(arr2);
 
     System.out.println("\nTest 3:");
     printArr(arr3);
     sort.selectionSort(arr3, 5);
     printArr(arr3);
+
+    System.out.println("\nTest 4:");
+    printArr(arr4);
+    sort.selectionSort(arr4, 2);
+    printArr(arr4);
+
+    System.out.println("\nTest 5:");
+    printArr(arr5);
+    sort.selectionSort(arr5, 3);
+    printArr(arr5);
   }
 
   public static void testMergeSort(Sorts sort)
@@ -62,6 +75,41 @@ public class TestSorts
     System.out.println("\nTest 5:");
     printArr(arr5);
     sort.mergeSort(arr5, 3);
+    printArr(arr5);
+  }
+
+  public static void testQuickSort(Sorts sort)
+  {
+    int[] arr1 = {5, 4, 3, 2, 1};
+    int[] arr2 = {3, 2, 4, 1};
+    int[] arr3 = {9, 5, -3, 0, 10};
+    int[] arr4 = {1, -1};
+    int[] arr5 = {0, 1, -1};
+
+    System.out.println("\n***** Quick Sort Tests *****");
+    System.out.println("Test 1:");
+    printArr(arr1);
+    sort.quickSort(arr1, 5);
+    printArr(arr1);
+
+    System.out.println("\nTest 2:");
+    printArr(arr2);
+    sort.quickSort(arr2, 4);
+    printArr(arr2);
+
+    System.out.println("\nTest 3:");
+    printArr(arr3);
+    sort.quickSort(arr3, 5);
+    printArr(arr3);
+
+    System.out.println("\nTest 4:");
+    printArr(arr4);
+    sort.quickSort(arr4, 2);
+    printArr(arr4);
+
+    System.out.println("\nTest 5:");
+    printArr(arr5);
+    sort.quickSort(arr5, 3);
     printArr(arr5);
   }
 
