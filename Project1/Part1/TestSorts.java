@@ -15,6 +15,17 @@ public class TestSorts
     int[] arr3 = {9, 5, -3, 0, 10};
     int[] arr4 = {1, -1};
     int[] arr5 = {0, 1, -1};
+    int[] arr6 = new int[10];
+    arr6[0] = 4;
+    arr6[1] = -2;
+    arr6[2] = 0;
+    int[] arr7 = new int[10];
+    arr7[0] = 3;
+    arr7[1] = 7;
+    arr7[2] = -1;
+    arr7[3] = 5;
+    int[] arr8 = new int[1];
+    arr8[0] = 7;
 
     System.out.println("\n***** Selection Sort Tests *****");
     System.out.println("Test 1:");
@@ -41,6 +52,21 @@ public class TestSorts
     printArr(arr5);
     sort.selectionSort(arr5, 3);
     printArr(arr5);
+
+    System.out.println("\nTest 6:");
+    printArr(arr6);
+    sort.selectionSort(arr6, 3);
+    printArr(arr6);
+
+    System.out.println("\nTest 7:");
+    printArr(arr7);
+    sort.selectionSort(arr7, 4);
+    printArr(arr7);
+
+    System.out.println("\nTest 8:");
+    printArr(arr8);
+    sort.selectionSort(arr8, 1);
+    printArr(arr8);
   }
 
   public static void testMergeSort(Sorts sort)
@@ -50,6 +76,17 @@ public class TestSorts
     int[] arr3 = {9, 5, -3, 0, 10};
     int[] arr4 = {1, -1};
     int[] arr5 = {0, 1, -1};
+    int[] arr6 = new int[10];
+    arr6[0] = 4;
+    arr6[1] = -2;
+    arr6[2] = 0;
+    int[] arr7 = new int[10];
+    arr7[0] = 3;
+    arr7[1] = 7;
+    arr7[2] = -1;
+    arr7[3] = 5;
+    int[] arr8 = new int[1];
+    arr8[0] = 7;
 
     System.out.println("\n***** Merge Sort Tests *****");
     System.out.println("Test 1:");
@@ -76,6 +113,21 @@ public class TestSorts
     printArr(arr5);
     sort.mergeSort(arr5, 3);
     printArr(arr5);
+
+    System.out.println("\nTest 6:");
+    printArr(arr6);
+    sort.mergeSort(arr6, 3);
+    printArr(arr6);
+
+    System.out.println("\nTest 7:");
+    printArr(arr7);
+    sort.mergeSort(arr7, 4);
+    printArr(arr7);
+
+    System.out.println("\nTest 8:");
+    printArr(arr8);
+    sort.mergeSort(arr8, 1);
+    printArr(arr8);
   }
 
   public static void testQuickSort(Sorts sort)
@@ -85,6 +137,18 @@ public class TestSorts
     int[] arr3 = {9, 5, -3, 0, 10};
     int[] arr4 = {1, -1};
     int[] arr5 = {0, 1, -1};
+    int[] arr6 = new int[10];
+    arr6[0] = 4;
+    arr6[1] = -2;
+    arr6[2] = 0;
+    int[] arr7 = new int[10];
+    arr7[0] = 3;
+    arr7[1] = 7;
+    arr7[2] = -1;
+    arr7[3] = 5;
+    int[] arr8 = new int[1];
+    arr8[0] = 7;
+    int[] arr9 = {5, 4, 2, 1, 3};
 
     System.out.println("\n***** Quick Sort Tests *****");
     System.out.println("Test 1:");
@@ -111,6 +175,26 @@ public class TestSorts
     printArr(arr5);
     sort.quickSort(arr5, 3);
     printArr(arr5);
+
+    System.out.println("\nTest 6:");
+    printArr(arr6);
+    sort.quickSort(arr6, 3);
+    printArr(arr6);
+
+    System.out.println("\nTest 7:");
+    printArr(arr7);
+    sort.quickSort(arr7, 4);
+    printArr(arr7);
+
+    System.out.println("\nTest 8:");
+    printArr(arr8);
+    sort.quickSort(arr8, 1);
+    printArr(arr8);
+
+    System.out.println("\nTest 9:");
+    printArr(arr9);
+    sort.quickSort(arr9, 5);
+    printArr(arr9);
   }
 
   public static void printArr(int[] arr)
