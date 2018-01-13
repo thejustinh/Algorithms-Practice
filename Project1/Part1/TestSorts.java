@@ -142,13 +142,14 @@ public class TestSorts
     arr6[1] = -2;
     arr6[2] = 0;
     int[] arr7 = new int[10];
-    arr7[0] = 3;
-    arr7[1] = 7;
-    arr7[2] = -1;
-    arr7[3] = 5;
+    arr7[0] = 4;
+    arr7[1] = 3;
+    arr7[2] = 2;
+    arr7[3] = 1;
     int[] arr8 = new int[1];
     arr8[0] = 7;
     int[] arr9 = {5, 4, 2, 1, 3};
+    int[] arr10 = {9, 8, 7};
 
     System.out.println("\n***** Quick Sort Tests *****");
     System.out.println("Test 1:");
@@ -195,6 +196,11 @@ public class TestSorts
     printArr(arr9);
     sort.quickSort(arr9, 5);
     printArr(arr9);
+
+    System.out.println("\nTest 10:");
+    printArr(arr10);
+    sort.quickSort(arr10, 3);
+    printArr(arr10);
   }
 
   public static void printArr(int[] arr)
@@ -203,4 +209,5 @@ public class TestSorts
       System.out.print(i + " ");
     System.out.println();
   }
+
 }

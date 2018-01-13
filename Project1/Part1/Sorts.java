@@ -137,26 +137,29 @@ public class Sorts
    **/
   private static void setPivotToEnd (int[] arr, int left, int right) {
 
-    // Find the median of three
-    int s, m ,l; // small, medium, large
-    int num1 = arr[left]; // left most element
-    int num2 = arr[right]; // right most element
-    int num3 = arr[(left + right) / 2]; // center element
+    int temp;
+    int center = (left+right)/2;
 
-    if (num1 <= num2 && num2 <= num3) {s = num1; m = num2; l = num3;}
-    else if (num1 <= num3 && num3 <= num2) {s = num1; m = num3; l = num2;}
-    else if (num2 <= num3 && num3 <= num1) {s = num2; m = num3; l = num1;}
-    else if (num2 <= num1 && num1 <= num3) {s = num2; m = num1; l = num3;}
-    else if (num3 <= num1 && num1 <= num2) {s = num3; m = num1; l = num2;}
-    else if (num3 <= num2 && num2 <= num1) {s = num3; m = num2; l = num1;}
-    else {s = num1; m = num1; l = num1;}
+    if (arr[center] < arr[left])
+    {
+      temp = arr[center];
+      arr[center] = arr[left];
+      arr[left] = temp;
+    }
 
-    arr[left] = s; // Left most index has smallest
+    if(arr[right] < arr[left])
+    {
+      temp = arr[right];
+      arr[right] = arr[left];
+      arr[left] = temp;
+    }
 
-    if (left != (left + right)/2) // if left and center are the same
-      arr[(left + right) / 2] = l; // Center of list has largest index
-
-    arr[right] = m; // Right most index has median
+    if(arr[center] < arr[right])
+    {
+      temp = arr[center];
+      arr[center] = arr[right];
+      arr[right] = temp;
+    }
 
   }
 
