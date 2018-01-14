@@ -1,3 +1,9 @@
+/*****
+ * Written By:
+ * Justin Herrera
+ * Juan Ramirez
+ **/
+
 public class TestSorts
 {
   public static void main (String[] args)
@@ -201,6 +207,7 @@ public class TestSorts
     printArr(arr10);
     sort.quickSort(arr10, 3);
     printArr(arr10);
+
   }
 
   public static void printArr(int[] arr)
@@ -210,4 +217,16 @@ public class TestSorts
     System.out.println();
   }
 
+  public static boolean isSorted (int[] a) {
+
+    for (int i = 0; i < a.length - 1; i++) {
+
+      if (a[i] > a[i + 1])
+        return false;
+
+    }
+
+    return true;
+
+  }
 }
