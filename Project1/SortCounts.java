@@ -31,7 +31,7 @@ import java.util.Random;
          // initialize array with random integers and copy into other arrays
          for (int j = 0; j < list1.length; j++) {
 
-           list1[j] = rand.nextInt(100);
+           list1[j] = rand.nextInt(i);
            list2[j] = list1[j];
            list3[j] = list1[j];
 
@@ -50,9 +50,9 @@ import java.util.Random;
      }
    }
 
-   public static int avgs(int[] arr) {
+   public static long avgs(int[] arr) {
 
-     int sum = 0;
+     long sum = 0;
      for (int i : arr)
       sum = sum + i;
 

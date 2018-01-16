@@ -3,7 +3,7 @@
  * Justin Herrera
  * Juan Ramirez
  **/
- 
+
 import java.util.Random;
 
 public class SortTimes {
@@ -16,6 +16,7 @@ public class SortTimes {
     for (int i = 5000; i <= 160000; i = i * 2) {
 
       for (int j = 0; j < 5; j++) {
+        
         int[] listcopy1 = new int[i];
         int[] listcopy2 = new int[i];
         int[] listcopy3 = new int[i];

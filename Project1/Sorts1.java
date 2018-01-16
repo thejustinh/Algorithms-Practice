@@ -6,6 +6,10 @@
 
 public class Sorts1
 {
+
+  private static int msCount = 0;
+  private static int qsCount = 0;
+
   /**
    * Sorts the list of N elements contained in arr[0..N-1] using the selection
    * sort algorithm
@@ -43,27 +47,25 @@ public class Sorts1
    **/
   public static int mergeSort (int[] arr, int N) {
 
-    int count = 0;
+    mergesort(arr, 0, N-1);
 
-    mergesort(arr, 0, N-1, count);
-
-    return count;
+    return msCount;
   }
 
   /**
    * This method sorts list[first..last] segment
    **/
-  private static void mergesort (int[] list, int first, int last, int count) {
+  private static void mergesort (int[] list, int first, int last) {
 
     //checking if there is more than one element in list[first..last] segment
     if (first < last) {
 
       int middle = (first + last)/2;
-      mergesort(list, first, middle, count);
-      mergesort(list, middle + 1, last, count);
+      mergesort(list, first, middle);
+      mergesort(list, middle + 1, last);
 
       //supporting method for merging two halves
-      mergeSortedHalves (list, first, middle, last, count);
+      mergeSortedHalves (list, first, middle, last);
 
     }
   }
@@ -74,7 +76,7 @@ public class Sorts1
    * Postcondition: arr[left..right] is sorted.
    **/
   private static void mergeSortedHalves (int[] arr, int left, int middle,
-                                          int right, int count) {
+                                          int right) {
 
     int[] temp = new int[right - left + 1];
     int index1 = left;
@@ -90,7 +92,7 @@ public class Sorts1
         temp[index] = arr[index2];
         index2++;
       }
-      count++;
+      msCount++;
       index++;
     }
 
@@ -117,29 +119,27 @@ public class Sorts1
    **/
   public static int quickSort (int[] list, int N) {
 
-    int count = 0;
+    quickSort(list, 0, N-1);
 
-    quickSort(list, 0, N-1, count);
-
-    return count;
+    return qsCount;
 
   }
 
   /**
    * Sorts list[first..last] segment
    **/
-  private static void quickSort (int[] list, int first, int last, int count) {
+  private static void quickSort (int[] list, int first, int last) {
 
     //checking if there is more than one element in list[first..last] segment
     if (first < last) {
 
       //supporting method
-      setPivotToEnd(list, first, last, count);
+      setPivotToEnd(list, first, last);
 
       //supporting method
-      int pivotIndex = splitList (list, first, last, count);
-      quickSort(list, first, pivotIndex-1, count);
-      quickSort(list, pivotIndex+1, last, count);
+      int pivotIndex = splitList (list, first, last);
+      quickSort(list, first, pivotIndex-1);
+      quickSort(list, pivotIndex+1, last);
 
     }
   }
@@ -149,7 +149,7 @@ public class Sorts1
    * Precondition: none
    * Postcondition: arr[right] is the pivot.
    **/
-  private static void setPivotToEnd (int[] arr, int left, int right, int count){
+  private static void setPivotToEnd (int[] arr, int left, int right){
 
     int temp;
     int center = (left+right)/2;
@@ -175,7 +175,7 @@ public class Sorts1
       arr[right] = temp;
     }
 
-    count = count + 3;
+    qsCount = qsCount + 3;
 
   }
 
@@ -188,7 +188,7 @@ public class Sorts1
    * located to the left of pivot, and arr[i]>pivot for all arr[i] located to
    * the right of the pivot.
    **/
-  private static int splitList (int[] arr, int left, int right, int count) {
+  private static int splitList (int[] arr, int left, int right) {
 
     // starts with the first index of the segment and increments by 1
     int indexL = left;
