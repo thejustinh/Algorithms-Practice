@@ -1,36 +1,36 @@
-N:5000 T_ss:20 T_ms:2 T_qs:1
-N:5000 T_ss:16 T_ms:0 T_qs:0
-N:5000 T_ss:7 T_ms:0 T_qs:0
-N:5000 T_ss:14 T_ms:0 T_qs:0
-N:5000 T_ss:14 T_ms:0 T_qs:0
+N=5000: T_ss=23, T_ms=1, T_qs=1
+N=5000: T_ss=20, T_ms=0, T_qs=0
+N=5000: T_ss=8, T_ms=0, T_qs=0
+N=5000: T_ss=15, T_ms=0, T_qs=0
+N=5000: T_ss=18, T_ms=0, T_qs=0
 
-N:10000 T_ss:56 T_ms:1 T_qs:0
-N:10000 T_ss:54 T_ms:2 T_qs:1
-N:10000 T_ss:63 T_ms:1 T_qs:0
-N:10000 T_ss:64 T_ms:1 T_qs:0
-N:10000 T_ss:29 T_ms:1 T_qs:0
+N=10000: T_ss=55, T_ms=1, T_qs=0
+N=10000: T_ss=61, T_ms=1, T_qs=0
+N=10000: T_ss=84, T_ms=1, T_qs=0
+N=10000: T_ss=62, T_ms=1, T_qs=0
+N=10000: T_ss=27, T_ms=1, T_qs=0
 
-N:20000 T_ss:106 T_ms:2 T_qs:1
-N:20000 T_ss:98 T_ms:2 T_qs:1
-N:20000 T_ss:101 T_ms:2 T_qs:1
-N:20000 T_ss:117 T_ms:3 T_qs:1
-N:20000 T_ss:109 T_ms:2 T_qs:1
+N=20000: T_ss=117, T_ms=3, T_qs=1
+N=20000: T_ss=113, T_ms=3, T_qs=1
+N=20000: T_ss=113, T_ms=3, T_qs=1
+N=20000: T_ss=119, T_ms=3, T_qs=1
+N=20000: T_ss=113, T_ms=3, T_qs=1
 
-N:40000 T_ss:441 T_ms:6 T_qs:3
-N:40000 T_ss:417 T_ms:6 T_qs:4
-N:40000 T_ss:397 T_ms:5 T_qs:2
-N:40000 T_ss:405 T_ms:5 T_qs:2
-N:40000 T_ss:408 T_ms:5 T_qs:3
+N=40000: T_ss=441, T_ms=5, T_qs=3
+N=40000: T_ss=438, T_ms=6, T_qs=3
+N=40000: T_ss=432, T_ms=5, T_qs=3
+N=40000: T_ss=413, T_ms=6, T_qs=3
+N=40000: T_ss=445, T_ms=8, T_qs=3
 
-N:80000 T_ss:1627 T_ms:11 T_qs:6
-N:80000 T_ss:1629 T_ms:12 T_qs:6
-N:80000 T_ss:1673 T_ms:11 T_qs:6
-N:80000 T_ss:1638 T_ms:11 T_qs:6
-N:80000 T_ss:1672 T_ms:11 T_qs:6
+N=80000: T_ss=1696, T_ms=11, T_qs=6
+N=80000: T_ss=1648, T_ms=12, T_qs=6
+N=80000: T_ss=1635, T_ms=13, T_qs=6
+N=80000: T_ss=1654, T_ms=11, T_qs=6
+N=80000: T_ss=1626, T_ms=11, T_qs=6
 
-N:160000 T_ss:6506 T_ms:19 T_qs:13
-N:160000 T_ss:6934 T_ms:26 T_qs:19
-N:160000 T_ss:6969 T_ms:19 T_qs:12
-N:160000 T_ss:6437 T_ms:20 T_qs:13
-N:160000 T_ss:6686 T_ms:18 T_qs:12
+N=160000: T_ss=7234, T_ms=21, T_qs=14
+N=160000: T_ss=6763, T_ms=19, T_qs=13
+N=160000: T_ss=6601, T_ms=22, T_qs=15
+N=160000: T_ss=6584, T_ms=20, T_qs=13
+N=160000: T_ss=6551, T_ms=23, T_qs=14
 

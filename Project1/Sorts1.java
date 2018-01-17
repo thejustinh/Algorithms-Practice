@@ -47,6 +47,8 @@ public class Sorts1
    **/
   public static int mergeSort (int[] arr, int N) {
 
+    msCount = 0;
+
     mergesort(arr, 0, N-1);
 
     return msCount;
@@ -118,6 +120,8 @@ public class Sorts1
    * elements.
    **/
   public static int quickSort (int[] list, int N) {
+
+    qsCount = 0;
 
     quickSort(list, 0, N-1);
 
@@ -201,12 +205,16 @@ public class Sorts1
     while (indexL <= indexR) {
 
       // increment indexL as long as it is smaller than the pivot
-      while (arr[indexL] < pivot)
+      while (arr[indexL] < pivot) {
         indexL++;
+        qsCount++;
+      }
 
       // decrement indexR as long as it has not crossed over and > pivot
-      while (indexR >= indexL && arr[indexR] > pivot)
+      while (indexR >= indexL && arr[indexR] > pivot) {
         indexR--;
+        qsCount++;
+      }
 
       // If the two indexes didnt "cross over", swap arr[indexR] and arr[indexL]
       if (indexR >= indexL) {
