@@ -1,0 +1,12 @@
+Average number of element-comparisons in three sorting algorithms:
+
+N=100: C_ss=39, C_ms=4, C_qs=3
+N=200: C_ss=157, C_ms=9, C_qs=9
+N=400: C_ss=626, C_ms=23, C_qs=20
+N=800: C_ss=2503, C_ms=52, C_qs=44
+N=1600: C_ss=10006, C_ms=117, C_qs=98
+N=3200: C_ss=40012, C_ms=259, C_qs=213
+N=6400: C_ss=160025, C_ms=569, C_qs=465
+N=12800: C_ss=640050, C_ms=1239, C_qs=993
+
+End of output

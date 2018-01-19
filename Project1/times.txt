@@ -1,36 +1,39 @@
-N=5000: T_ss=23, T_ms=1, T_qs=1
-N=5000: T_ss=20, T_ms=0, T_qs=0
-N=5000: T_ss=8, T_ms=0, T_qs=0
-N=5000: T_ss=15, T_ms=0, T_qs=0
-N=5000: T_ss=18, T_ms=0, T_qs=0
+Running Times of three sorting algorithms:
 
-N=10000: T_ss=55, T_ms=1, T_qs=0
-N=10000: T_ss=61, T_ms=1, T_qs=0
-N=10000: T_ss=84, T_ms=1, T_qs=0
-N=10000: T_ss=62, T_ms=1, T_qs=0
-N=10000: T_ss=27, T_ms=1, T_qs=0
+N=5000: T_ss=50, T_ms=10, T_qs=14
+N=5000: T_ss=49, T_ms=7, T_qs=0
+N=5000: T_ss=96, T_ms=12, T_qs=1
+N=5000: T_ss=227, T_ms=77, T_qs=0
+N=5000: T_ss=119, T_ms=9, T_qs=57
 
-N=20000: T_ss=117, T_ms=3, T_qs=1
-N=20000: T_ss=113, T_ms=3, T_qs=1
-N=20000: T_ss=113, T_ms=3, T_qs=1
-N=20000: T_ss=119, T_ms=3, T_qs=1
-N=20000: T_ss=113, T_ms=3, T_qs=1
+N=10000: T_ss=163, T_ms=16, T_qs=1
+N=10000: T_ss=343, T_ms=3, T_qs=1
+N=10000: T_ss=267, T_ms=2, T_qs=1
+N=10000: T_ss=510, T_ms=12, T_qs=1
+N=10000: T_ss=102, T_ms=3, T_qs=1
 
-N=40000: T_ss=441, T_ms=5, T_qs=3
-N=40000: T_ss=438, T_ms=6, T_qs=3
-N=40000: T_ss=432, T_ms=5, T_qs=3
-N=40000: T_ss=413, T_ms=6, T_qs=3
-N=40000: T_ss=445, T_ms=8, T_qs=3
+N=20000: T_ss=664, T_ms=6, T_qs=3
+N=20000: T_ss=525, T_ms=6, T_qs=3
+N=20000: T_ss=829, T_ms=4, T_qs=3
+N=20000: T_ss=724, T_ms=6, T_qs=3
+N=20000: T_ss=440, T_ms=8, T_qs=2
 
-N=80000: T_ss=1696, T_ms=11, T_qs=6
-N=80000: T_ss=1648, T_ms=12, T_qs=6
-N=80000: T_ss=1635, T_ms=13, T_qs=6
-N=80000: T_ss=1654, T_ms=11, T_qs=6
-N=80000: T_ss=1626, T_ms=11, T_qs=6
+N=40000: T_ss=2696, T_ms=13, T_qs=6
+N=40000: T_ss=2866, T_ms=16, T_qs=6
+N=40000: T_ss=2714, T_ms=59, T_qs=6
+N=40000: T_ss=2368, T_ms=8, T_qs=4
+N=40000: T_ss=2552, T_ms=16, T_qs=8
 
-N=160000: T_ss=7234, T_ms=21, T_qs=14
-N=160000: T_ss=6763, T_ms=19, T_qs=13
-N=160000: T_ss=6601, T_ms=22, T_qs=15
-N=160000: T_ss=6584, T_ms=20, T_qs=13
-N=160000: T_ss=6551, T_ms=23, T_qs=14
+N=80000: T_ss=10722, T_ms=21, T_qs=13
+N=80000: T_ss=10413, T_ms=23, T_qs=14
+N=80000: T_ss=10537, T_ms=24, T_qs=13
+N=80000: T_ss=10371, T_ms=433, T_qs=14
+N=80000: T_ss=10813, T_ms=36, T_qs=14
 
+N=160000: T_ss=40412, T_ms=110, T_qs=284
+N=160000: T_ss=40743, T_ms=215, T_qs=136
+N=160000: T_ss=41227, T_ms=88, T_qs=181
+N=160000: T_ss=41687, T_ms=108, T_qs=27
+N=160000: T_ss=41616, T_ms=149, T_qs=120
+
+End of output
