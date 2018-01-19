@@ -1,8 +1,12 @@
-/*****
- * Written By:
+/**
+ * Written by:
  * Justin Herrera
+ * jherre34@calpoly.edu
  * Juan Ramirez
- **/
+ * jramir94@calpoly.edu
+ * Project 1
+ * Friday, January 19th, 2018
+ */
 
 public class Sorts1
 {
@@ -224,8 +228,11 @@ public class Sorts1
         arr[indexL] = temp;
         indexL++;
         indexR--;
+        qsCount++;
 
       }
+
+      qsCount++;
     }
 
     int temp = arr[indexL];

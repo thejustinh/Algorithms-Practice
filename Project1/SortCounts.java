@@ -1,8 +1,12 @@
-/*****
- * Written By:
+/**
+ * Written by:
  * Justin Herrera
+ * jherre34@calpoly.edu
  * Juan Ramirez
- **/
+ * jramir94@calpoly.edu
+ * Project 1
+ * Friday, January 19th, 2018
+ */
 
 import java.util.Random;
 
@@ -15,11 +19,13 @@ import java.util.Random;
      Sorts1 sort = new Sorts1();
      Random rand = new Random();
 
+     System.out.println("Average number of element-comparisons in three sorting algorithms:\n");
+
      for (int i = 100; i <= 12800; i = i * 2) {
 
-       int[] ssaverages = new int[100];
-       int[] msaverages = new int[100];
-       int[] qsaverages = new int[100];
+       int[] ssAverages = new int[100];
+       int[] msAverages = new int[100];
+       int[] qsAverages = new int[100];
 
        // Run algorithm 100 times per list length
        for (int k = 0; k < 100; k++) {
@@ -38,16 +44,18 @@ import java.util.Random;
          }
 
          // Store averages into array
-         ssaverages[k] = sort.selectionSort(list1, i);
-         msaverages[k] = sort.mergeSort(list2, i);
-         qsaverages[k] = sort.quickSort(list3, i);
+         ssAverages[k] = sort.selectionSort(list1, i);
+         msAverages[k] = sort.mergeSort(list2, i);
+         qsAverages[k] = sort.quickSort(list3, i);
 
        }
 
-       System.out.println("N=" + i + ": C_ss=" + avgs(ssaverages) +
-                          ", C_ms=" + avgs(msaverages) +
-                          ", C_qs=" + avgs(qsaverages));
+       System.out.println("N=" + i + ": C_ss=" + avgs(ssAverages) +
+                          ", C_ms=" + avgs(msAverages) +
+                          ", C_qs=" + avgs(qsAverages));
      }
+
+     System.out.println("\nEnd of output");
    }
 
    public static long avgs(int[] arr) {
@@ -56,6 +64,6 @@ import java.util.Random;
      for (int i : arr)
       sum = sum + i;
 
-    return sum/arr.length;
+     return sum/arr.length;
    }
  }

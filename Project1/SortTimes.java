@@ -1,8 +1,12 @@
-/*****
- * Written By:
+/**
+ * Written by:
  * Justin Herrera
+ * jherre34@calpoly.edu
  * Juan Ramirez
- **/
+ * jramir94@calpoly.edu
+ * Project 1
+ * Friday, January 19th, 2018
+ */
 
 import java.util.Random;
 
@@ -12,6 +16,8 @@ public class SortTimes {
 
     Sorts sort = new Sorts();
     Random rand = new Random();
+
+    System.out.println("Running Times of three sorting algorithms:\n");
 
     for (int i = 5000; i <= 160000; i = i * 2) {
 
@@ -53,5 +59,7 @@ public class SortTimes {
 
       System.out.println();
     }
+
+    System.out.println("End of output");
   }
 }
