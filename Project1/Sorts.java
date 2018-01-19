@@ -18,7 +18,7 @@ public class Sorts
 
       minI = i;
 
-      for (int j = i; j < N; j++) {
+      for (int j = i+1; j < N; j++) {
 
         if (arr[minI] > arr[j])
           minI = j;

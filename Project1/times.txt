@@ -1,36 +1,36 @@
-N=5000: T_ss=23, T_ms=1, T_qs=1
-N=5000: T_ss=20, T_ms=0, T_qs=0
-N=5000: T_ss=8, T_ms=0, T_qs=0
-N=5000: T_ss=15, T_ms=0, T_qs=0
-N=5000: T_ss=18, T_ms=0, T_qs=0
+N=5000: T_ss=17, T_ms=1, T_qs=1
+N=5000: T_ss=14, T_ms=0, T_qs=0
+N=5000: T_ss=7, T_ms=0, T_qs=0
+N=5000: T_ss=13, T_ms=0, T_qs=0
+N=5000: T_ss=11, T_ms=0, T_qs=0
 
-N=10000: T_ss=55, T_ms=1, T_qs=0
-N=10000: T_ss=61, T_ms=1, T_qs=0
-N=10000: T_ss=84, T_ms=1, T_qs=0
-N=10000: T_ss=62, T_ms=1, T_qs=0
+N=10000: T_ss=42, T_ms=2, T_qs=1
+N=10000: T_ss=43, T_ms=1, T_qs=1
+N=10000: T_ss=49, T_ms=1, T_qs=0
+N=10000: T_ss=46, T_ms=1, T_qs=0
 N=10000: T_ss=27, T_ms=1, T_qs=0
 
-N=20000: T_ss=117, T_ms=3, T_qs=1
-N=20000: T_ss=113, T_ms=3, T_qs=1
-N=20000: T_ss=113, T_ms=3, T_qs=1
-N=20000: T_ss=119, T_ms=3, T_qs=1
-N=20000: T_ss=113, T_ms=3, T_qs=1
+N=20000: T_ss=112, T_ms=2, T_qs=1
+N=20000: T_ss=96, T_ms=2, T_qs=1
+N=20000: T_ss=101, T_ms=2, T_qs=1
+N=20000: T_ss=112, T_ms=2, T_qs=1
+N=20000: T_ss=109, T_ms=2, T_qs=1
 
-N=40000: T_ss=441, T_ms=5, T_qs=3
-N=40000: T_ss=438, T_ms=6, T_qs=3
-N=40000: T_ss=432, T_ms=5, T_qs=3
-N=40000: T_ss=413, T_ms=6, T_qs=3
-N=40000: T_ss=445, T_ms=8, T_qs=3
+N=40000: T_ss=420, T_ms=5, T_qs=3
+N=40000: T_ss=396, T_ms=5, T_qs=2
+N=40000: T_ss=401, T_ms=5, T_qs=2
+N=40000: T_ss=393, T_ms=5, T_qs=2
+N=40000: T_ss=392, T_ms=5, T_qs=2
 
-N=80000: T_ss=1696, T_ms=11, T_qs=6
-N=80000: T_ss=1648, T_ms=12, T_qs=6
-N=80000: T_ss=1635, T_ms=13, T_qs=6
-N=80000: T_ss=1654, T_ms=11, T_qs=6
-N=80000: T_ss=1626, T_ms=11, T_qs=6
+N=80000: T_ss=1581, T_ms=11, T_qs=6
+N=80000: T_ss=1592, T_ms=11, T_qs=6
+N=80000: T_ss=1559, T_ms=14, T_qs=7
+N=80000: T_ss=1706, T_ms=13, T_qs=7
+N=80000: T_ss=2096, T_ms=15, T_qs=7
 
-N=160000: T_ss=7234, T_ms=21, T_qs=14
-N=160000: T_ss=6763, T_ms=19, T_qs=13
-N=160000: T_ss=6601, T_ms=22, T_qs=15
-N=160000: T_ss=6584, T_ms=20, T_qs=13
-N=160000: T_ss=6551, T_ms=23, T_qs=14
+N=160000: T_ss=7567, T_ms=20, T_qs=13
+N=160000: T_ss=6804, T_ms=20, T_qs=16
+N=160000: T_ss=7584, T_ms=21, T_qs=15
+N=160000: T_ss=7244, T_ms=20, T_qs=13
+N=160000: T_ss=6242, T_ms=22, T_qs=14
 
