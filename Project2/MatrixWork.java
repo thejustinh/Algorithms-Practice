@@ -62,13 +62,15 @@ public class MatrixWork {
       }
       scanner.close();
 
-      int[][] thirdMatrix = matrixProduct(firstMatrix, secondMatrix);
+      int[][] thirdMatrix = new int[rowA][colsB];
 
-//      printMatrix(firstMatrix);
-//      System.out.println();
-//     printMatrix(secondMatrix);
-      System.out.println("\nProduct matrix: ");
-      printMatrix(thirdMatrix);
+      try {
+         thirdMatrix = matrixProduct(firstMatrix, secondMatrix);
+         System.out.println("\nProduct matrix: ");
+         printMatrix(thirdMatrix);
+      } catch(IllegalArgumentException e) {
+         System.out.println("Error: Arguments invalid.");
+      }
    }
 
    public static void printMatrix(int[][] A) {
