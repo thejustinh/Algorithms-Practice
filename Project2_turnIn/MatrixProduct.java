@@ -11,15 +11,6 @@
 
 public class MatrixProduct {
 
-  private static void isValid(int[][] A, int[][] B) {
-
-    if((A.length != A[0].length) || B.length != B[0].length ||
-        A.length != B.length || ((A.length & -A.length) != A.length)) {
-      throw new IllegalArgumentException("Error: Illegal arguments.");
-    }
-
-  }
-
   public static int[][] matrixProduct_DAC(int[][] A, int[][] B) {
 
     isValid(A, B);
@@ -33,6 +24,15 @@ public class MatrixProduct {
     isValid(A, B);
 
     return matrixProduct_Strassen(A, 0, 0, B, 0, 0, A.length);
+
+  }
+
+  private static void isValid(int[][] A, int[][] B) {
+
+    if((A.length != A[0].length) || B.length != B[0].length ||
+        A.length != B.length || ((A.length & -A.length) != A.length)) {
+      throw new IllegalArgumentException("Error: Illegal arguments.");
+    }
 
   }
 
