@@ -10,7 +10,7 @@ public class GameProblem {
     System.out.print("Enter a filename: " );
     String filename = scanner.nextLine();
 
-    try {}
+    try {
       File file = new File(filename);
       Scanner inputFile = new Scanner(file);
 
@@ -26,27 +26,94 @@ public class GameProblem {
       }
 
       printMatrix(A);
+
+      System.out.println("\n\n***** Running Game Solution *****\n");
+      game(n, m, A);
+
     } catch (Exception e) {
       e.printStackTrace();
     }
+
   }
 
   public static void game(int n, int m, int[][] A) {
+
     int[][] S = new int[n][m];
     int[][] R = new int[n][m];
+    int maxSum = Integer.MIN_VALUE;
+    int maxRowIndex = Integer.MIN_VALUE;
+    int maxColIndex = Integer.MIN_VALUE;
 
-    for (i = 0; i < n; i++) {
-      for (j = 0; j < m; j++) {
-        if (i == n && j == m)
-          //  (𝑡ℎ𝑖𝑠 𝑖𝑠 𝑡ℎ𝑒 𝑏𝑜𝑡𝑡𝑜𝑚−𝑟𝑖𝑔ℎ𝑡 𝑠𝑞𝑢𝑎𝑟𝑒: 𝑦𝑜𝑢 𝑐𝑎𝑛 𝑜𝑛𝑙𝑦 𝑒𝑥𝑖𝑡)
-        else if (j == m)
-          // 𝑚 (𝑡ℎ𝑖𝑠 𝑖𝑠 𝑡ℎ𝑒 𝑙𝑎𝑠𝑡 𝑐𝑜𝑙𝑢𝑚𝑛: 𝑚𝑜𝑣𝑒 𝑑𝑜𝑤𝑛 𝑜𝑟 𝑒𝑥𝑖𝑡)
-        else if (i == m)
-          // 𝑛 (𝑡ℎ𝑖𝑠 𝑖𝑠 𝑡ℎ𝑒 𝑙𝑎𝑠𝑡 𝑟𝑜𝑤: 𝑚𝑜𝑣𝑒 𝑟𝑖𝑔ℎ𝑡 𝑜𝑟 𝑒𝑥𝑖𝑡)
-        else
-          // (𝑐ℎ𝑒𝑐𝑘 𝑡ℎ𝑒 𝑏𝑒𝑡𝑡𝑒𝑟: 𝑚𝑜𝑣𝑒 𝑑𝑜𝑤𝑛 𝑜𝑟 𝑟𝑖𝑔ℎ𝑡)
+    // Fill S-Table with A's most right column and most bottom row
+    for (int i = 0; i < A.length; i++) {
+      S[i][m - 1] = A[i][m - 1];
+    }
+    for (int j = 0; j < A[0].length; j++) {
+      S[n - 1][j] = A[n - 1][j];
+    }
+
+    // Fill the rest of the S-Table
+    for (int k = m - 1 - 1; k >= 0; k--) {
+      for (int i = n - 1 - 1; i >= 0; i--) {
+        S[k][i] = chooseMax(i, k, S, A, R);
+        if (maxSum < S[k][i]){
+          maxSum = S[k][i];
+          maxRowIndex = k;
+          maxColIndex = i;
+        }
+      }
+      for (int j = m - 1 - 1; j >= 0; j--) {
+        S[j][k] = chooseMax(k, j, S, A, R);
+        if (maxSum < S[j][k]) {
+          maxSum = S[j][k];
+          maxRowIndex = j;
+          maxColIndex = k;
+        }
       }
     }
+
+    System.out.println("\nSum Matrix");
+    printMatrix(S);
+    System.out.println("\nRoute Matrix");
+    printMatrix(R);
+    System.out.println("\nBest Score: " + maxSum);
+    printRoute(maxRowIndex, maxColIndex, R);
+    
+  }
+
+  public static int chooseMax(int x, int y, int[][] S, int[][] A, int[][] R) {
+
+    int bottomVal = S[y + 1][x] + A[y][x];
+    int rightVal = S[y][x + 1] + A[y][x];
+
+    if (bottomVal > rightVal) {
+      R[y][x] = 1; // Indicator to move down
+      return bottomVal;
+    }
+
+    R[y][x] = 2; // Indicator to move right
+    return rightVal;
+
+  }
+
+  public static void printRoute(int startRow, int startCol, int[][] R) {
+
+    System.out.print("Best Route: ");
+
+    while (startRow < R.length && startCol < R[0].length) {
+
+      System.out.print("[" + (startRow+1) + "," + (startCol+1) + "] to ");
+
+      if (R[startRow][startCol] == 2)
+        startCol++;
+      else if (R[startRow][startCol] == 1)
+        startRow++;
+      else if (R[startRow][startCol] == 0)
+        break;
+    }
+
+    System.out.print("exit\n");
+
   }
 
   public static void printMatrix(int[][] A) {
