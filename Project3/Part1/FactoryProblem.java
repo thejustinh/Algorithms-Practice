@@ -38,7 +38,7 @@ public class FactoryProblem {
 
       inputStTr(stations, transfers, fileScanner, numStations);
 
-      System.out.println(scheduler(stations, transfers, enter, exit, numStations));
+      scheduler(stations, transfers, enter, exit, numStations);
    }
 
    public static void inputEnEx(int[] enter, int[] exit, Scanner s) {
@@ -69,36 +69,44 @@ public class FactoryProblem {
       }
    }
 
-   public static int scheduler(int[][] stations, int[][] transfers, int[] enters, int[] exits, int numStations) {
-      int line1[] = new int[numStations];
-      int line2[] = new int[numStations];
+   public static void scheduler(int[][] stations, int[][] transfers, int[] enters, int[] exits, int numStations) {
+      int[] line1 = new int[numStations];
+      int[] line2 = new int[numStations];
+      int[] bestRoute = new int[numStations];
+      int i;
 
-      line1[0] = exits[0] + stations[0][0];
+      line1[0] = enters[0] + stations[0][0];
+      line2[0] = enters[1] + stations[1][0];
 
-      line2[0] = exits[1] + stations[1][0];
 
-      System.out.println("\n\nPrint Statements\nexit[0]: " + exits[0]);
-      System.out.println("station[0][0]: " + stations[0][0]);
-      System.out.println("line 1[0]: " + line1[0]);
-      System.out.println("exit[1]: " + exits[1]);
-      System.out.println("station[1][0]: " + stations[1][0]);
-      System.out.println("line2[0]: " + line2[0]);
-      System.out.println("exit[0]: " + exits[0]);
-      System.out.println("exit[1]: " + exits[1]);
-      System.out.println("station[0][1]: " + stations[0][1]);
 
-      for(int i = 1; i < numStations + 1; ++i) {
-         System.out.println("\n\ni: " + i);
-         System.out.println("stations[0][" + i + "]: " + stations[0][i]);
-         System.out.println("stations[" + i + "][0]: " + stations[i][0]);
-         System.out.println("line1[" + i + "]: " + line1[i]);
-         System.out.println("stations[" + i + "][0]: " + stations[i][0]);
-         System.out.println("line2[" + i + "]: " + line2[i]);
-         line1[i] = min(line1[i - 1] + stations[0][i], line2[i - 1] + transfers[1][i] + stations[0][i]);
-         line2[i] = min(line2[i - 1] + stations[1][i], line1[i - 1] + transfers[0][i] + stations[1][i]);
+      for(i = 1; i < numStations; i++) {
+         line1[i] = min(line1[i - 1] + stations[0][i], line2[i - 1] + transfers[1][i - 1] + stations[0][i]);
+         if(line1[i - 1] + stations[0][i] <= line2[i - 1] + transfers[1][i - 1] + stations[0][i]) 
+            bestRoute[i] = 1;
+         else
+            bestRoute[i] = 2;
+         line2[i] = min(line2[i - 1] + stations[1][i], line1[i - 1] + transfers[0][i - 1] + stations[1][i]);
+
+         if(line2[i - 1] + stations[1][i] <= line1[i - 1] + transfers[0][i - 1] + stations[1][i])
+            bestRoute[i] = 2;
+         else
+            bestRoute[i] = 1;
+
       }
 
-      return min(line1[numStations - 1] + exits[0], line2[numStations - 1] + exits[1]);
+      if(line1[numStations - 1] + exits[0] <= line2[numStations - 1] + exits[1]) {
+         bestRoute[0] = 1;
+      }
+      else
+         bestRoute[0] = 2;
+
+      System.out.print("\nFastest time is: " +  min(line1[numStations - 1] + exits[0], line2[numStations - 1] + exits[1]) + "\n\n");
+
+      System.out.println("The optimal route is: ");
+      for(i = 0; i < numStations; i++) {
+         System.out.println("Station " + (i+1) +", line " + bestRoute[i]);
+      }
    }
 
    public static void printSolution(int[][] lines, int numStations) {
