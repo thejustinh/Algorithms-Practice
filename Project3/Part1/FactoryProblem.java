@@ -11,77 +11,122 @@
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.lang.Thread;
 
 public class FactoryProblem {
+   public static final int TWO = 2;
+
    public static void main(String[] args) throws FileNotFoundException {
       File file;
       Scanner scanner = new Scanner(System.in);
       Scanner fileScanner;
-      int numStations, enter1, enter2, exit1, exit2, cnt1, cnt2, cnt3, cnt4, i = 0, j = 0;
-      int[] station1, station2, transfer1, transfer2;
+      int numStations, i, j;
+      int[] enter = new int[TWO];
+      int[] exit = new int[TWO];
+      int[][] stations, transfers;
 
       System.out.print("Enter name of file: ");
       file = new File(scanner.nextLine());
       System.out.println("File selected: " + file);
       fileScanner = new Scanner(file);
 
-      numStations = cnt1 = cnt2 = cnt3 = cnt4 = fileScanner.nextInt();
-      enter1 = fileScanner.nextInt();
-      enter2 = fileScanner.nextInt();
-      exit1 = fileScanner.nextInt();
-      exit2 = fileScanner.nextInt();
-      
-      station1 = new int[numStations];
-      station2 = new int[numStations];
-      transfer1 = new int[numStations - 1];
-      transfer2 = new int[numStations - 1];
+      numStations = fileScanner.nextInt();
 
-      while(cnt1 > 0) {
-         station1[i++] = fileScanner.nextInt();
-         cnt1--;
+      for(i = 0; i < TWO; i++) {
+         enter[i] = fileScanner.nextInt();
       }
 
-      while(cnt2 > 0) {
-         station2[j++] = fileScanner.nextInt();
-         cnt2--;
+      for(i = 0; i < TWO; i++) {
+         exit[i] = fileScanner.nextInt();
       }
 
-      i = j = 0;
+      stations = new int[TWO][numStations];
+      transfers = new int[TWO][numStations - 1];
 
-      while(cnt3 > 1) {
-         transfer1[i++] = fileScanner.nextInt();
-         cnt3--;
+      for(i = 0; i < TWO; i++) {
+         for(j = 0; j < numStations; j++) {
+            stations[i][j] = fileScanner.nextInt();
+         }
       }
 
-      while(cnt4 > 1) {
-         transfer2[j++] = fileScanner.nextInt();
-         cnt4--;
+      for(i = 0; i < TWO; i++) {
+         for(j = 0; j < numStations - 1; j++) {
+            transfers[i][j] = fileScanner.nextInt();
+         }
       }
-
+/*
       System.out.println("\nNumber of Stations: " + numStations);
-      System.out.println("\nCost of Entry to S #1: " + enter1);
-      System.out.println("Cost of Entry to S #2: " + enter2);
-      System.out.println("Cost of Exit from S #1: " + exit1);
-      System.out.println("Cost of Exit from S #2: " + exit2);
+      System.out.println("\nCost of Entry to S #1: " + enter[0]);
+      System.out.println("Cost of Entry to S #2: " + enter[1]);
+      System.out.println("Cost of Exit from S #1: " + exit[0]);
+      System.out.println("Cost of Exit from S #2: " + exit[1]);
       System.out.print("\nStation 1: [ ");
       for(i = 0; i < numStations; i++) {
-         System.out.print(station1[i] + " ");
+         System.out.print(stations[0][i] + " ");
       }
       System.out.println("]");
       System.out.print("Station 2: [ ");
       for(i = 0; i < numStations; i++) {
-         System.out.print(station2[i] + " ");
+         System.out.print(stations[1][i] + " ");
       }
       System.out.println("]");
       System.out.print("\nTransfer 1: [ ");
       for(i = 0; i < numStations - 1; i++) {
-         System.out.print(transfer1[i] + " ");
+         System.out.print(transfers[0][i] + " ");
       }
       System.out.println("]");
       System.out.print("Transfer 2: [ ");
       for(i = 0; i < numStations - 1; i++) {
-         System.out.print(transfer2[i] + " ");
+         System.out.print(transfers[1][i] + " ");
       }
       System.out.println("]");
+*/
+      System.out.println("Running Algorithm...");
+
+      try {
+         Thread.sleep(2000);
+      } catch (InterruptedException e) {
+           e.printStackTrace();
+      }
+
+      System.out.println(scheduler(stations, transfers, enter, exit, numStations));
+   }
+
+   public static int scheduler(int[][] stations, int[][] transfers, int[] enters, int[] exits, int numStations) {
+      int line1[] = new int[numStations];
+      int line2[] = new int[numStations];
+
+      line1[0] = exits[0] + stations[0][0];
+
+      line2[0] = exits[1] + stations[1][0];
+
+      System.out.println("\n\nPrint Statements\nexit[0]: " + exits[0]);
+      System.out.println("station[0][0]: " + stations[0][0]);
+      System.out.println("line 1[0]: " + line1[0]);
+      System.out.println("exit[1]: " + exits[1]);
+      System.out.println("station[1][0]: " + stations[1][0]);
+      System.out.println("line2[0]: " + line2[0]);
+      System.out.println("exit[0]: " + exits[0]);
+      System.out.println("exit[1]: " + exits[1]);
+      System.out.println("station[0][1]: " + stations[0][1]);
+
+      for(int i = 1; i < numStations; ++i) {
+         System.out.println("\n\ni: " + i);
+         System.out.println("stations[0][" + i + "]: " + stations[0][i]);
+         System.out.println("line1[" + i + "]: " + line1[i]);
+         System.out.println("stations[" + i + "][0]: " + stations[i][0]);
+         System.out.println("line2[" + i + "]: " + line2[i]);
+         line1[i] = min(line1[i - 1] + stations[0][i], line2[i - 1] + transfers[1][i] + stations[0][i]);
+         line2[i] = min(line2[i - 1] + stations[1][i], line1[i - 1] + transfers[0][i] + stations[1][i]);
+      }
+
+      return min(line1[numStations - 1] + exits[0], line2[numStations - 1] + exits[1]);
+   }
+
+   public static int min(int a, int b) {
+      if(a < b)
+         return a;
+
+      return b;
    }
 }
