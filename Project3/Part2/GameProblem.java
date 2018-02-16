@@ -25,9 +25,6 @@ public class GameProblem {
         }
       }
 
-      printMatrix(A);
-
-      System.out.println("\n\n***** Running Game Solution *****\n");
       game(n, m, A);
 
     } catch (Exception e) {
@@ -44,41 +41,49 @@ public class GameProblem {
     int maxRowIndex = Integer.MIN_VALUE;
     int maxColIndex = Integer.MIN_VALUE;
 
-    // Fill S-Table with A's most right column and most bottom row
-    for (int i = 0; i < A.length; i++) {
-      S[i][m - 1] = A[i][m - 1];
-    }
-    for (int j = 0; j < A[0].length; j++) {
-      S[n - 1][j] = A[n - 1][j];
-    }
+    for (int i = n - 1; i >= 0; i--) {
+      for (int j = m - 1; j >= 0; j--) {
+        if (i == n - 1 && j == m - 1) { // we are at the bottom right
+          S[i][j] = A[i][j];
+          R[i][j] = 0; // Exit flag
+        } else if (j == m - 1) {
+          S[i][j] = max(S[i + 1][m - 1], 0) + A[i][j];
+          // Right column: Move down or exit
+          if (S[i + 1][m - 1] > 0) // if bottomVal > 0
+            R[i][j] = 1;
+        } else if (i == n - 1) {
+          S[i][j] = max(S[n - 1][j + 1], 0) + A[i][j];
+          // Bottom row: Move right or exit
+          if (S[n - 1][j + 1] > 0) // if rightVal > 0
+            R[i][j] = 2;
+        } else {
+          S[i][j] = max(S[i + 1][j], S[i][j + 1]) + A[i][j];
+          // Check better and move right or down
+          if (S[i + 1][j] < S[i][j + 1])  // If bottomVal < rightVal
+            R[i][j] = 2;
+          else
+            R[i][j] = 1;
+        }
 
-    // Fill the rest of the S-Table
-    for (int k = m - 1 - 1; k >= 0; k--) {
-      for (int i = n - 1 - 1; i >= 0; i--) {
-        S[k][i] = chooseMax(i, k, S, A, R);
-        if (maxSum < S[k][i]){
-          maxSum = S[k][i];
-          maxRowIndex = k;
-          maxColIndex = i;
+        if (maxSum < S[i][j]) {
+          maxSum = S[i][j];
+          maxRowIndex = i;
+          maxColIndex = j;
         }
       }
-      for (int j = m - 1 - 1; j >= 0; j--) {
-        S[j][k] = chooseMax(k, j, S, A, R);
-        if (maxSum < S[j][k]) {
-          maxSum = S[j][k];
-          maxRowIndex = j;
-          maxColIndex = k;
-        }
-      }
     }
 
-    System.out.println("\nSum Matrix");
-    printMatrix(S);
-    System.out.println("\nRoute Matrix");
-    printMatrix(R);
-    System.out.println("\nBest Score: " + maxSum);
+    System.out.println("Best Score: " + maxSum);
     printRoute(maxRowIndex, maxColIndex, R);
-    
+
+  }
+
+  public static int max(int x, int y) {
+
+      if (x > y)
+        return x;
+
+      return y;
   }
 
   public static int chooseMax(int x, int y, int[][] S, int[][] A, int[][] R) {
@@ -100,7 +105,7 @@ public class GameProblem {
 
     System.out.print("Best Route: ");
 
-    while (startRow < R.length && startCol < R[0].length) {
+    while (R[startRow][startCol] != 0) {
 
       System.out.print("[" + (startRow+1) + "," + (startCol+1) + "] to ");
 
@@ -108,9 +113,10 @@ public class GameProblem {
         startCol++;
       else if (R[startRow][startCol] == 1)
         startRow++;
-      else if (R[startRow][startCol] == 0)
-        break;
+
     }
+
+    System.out.print("[" + (startRow+1) + "," + (startCol+1) + "] to ");
 
     System.out.print("exit\n");
 
