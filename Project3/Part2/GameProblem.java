@@ -1,3 +1,13 @@
+/*
+ * Justin Herrera
+ * jherre34@calpoly.edu
+ * Juan Ramirez
+ * jramir94@calpoly.edu
+ *
+ * Project 3
+ * Friday, February 16, 2018
+ */
+
 import java.util.Scanner;
 import java.io.File;
 
