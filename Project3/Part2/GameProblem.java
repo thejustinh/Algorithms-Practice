@@ -94,6 +94,7 @@ public class GameProblem {
         return x;
 
       return y;
+
   }
 
   public static int chooseMax(int x, int y, int[][] S, int[][] A, int[][] R) {
@@ -102,8 +103,10 @@ public class GameProblem {
     int rightVal = S[y][x + 1] + A[y][x];
 
     if (bottomVal > rightVal) {
+
       R[y][x] = 1; // Indicator to move down
       return bottomVal;
+
     }
 
     R[y][x] = 2; // Indicator to move right
@@ -133,12 +136,19 @@ public class GameProblem {
   }
 
   public static void printMatrix(int[][] A) {
+
     if (A != null) {
+
       for (int i = 0; i < A.length; i++) {
+
         for (int j = 0; j < A[0].length; j++) {
+
           System.out.print(A[i][j] + " ");
+
         }
+
         System.out.println();
+
       }
     }
   }
