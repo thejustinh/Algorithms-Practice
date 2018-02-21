@@ -11,7 +11,6 @@
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.lang.Thread;
 
 public class FactoryProblem {
    public static final int TWO = 2;
@@ -26,7 +25,7 @@ public class FactoryProblem {
       file = new File(scanner.nextLine());
 
       try {
-        
+
         fileScanner = new Scanner(file);
 
         // line 1
