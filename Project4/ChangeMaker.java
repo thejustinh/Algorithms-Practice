@@ -1,3 +1,13 @@
+/*
+ * Justin Herrera
+ * jherre34@calpoly.edu
+ * Juan Ramirez
+ * jramir94@calpoly.edu
+ *
+ * Project 4
+ * Friday, March 2, 2018
+ */
+
 import java.util.Scanner;
 
 public class ChangeMaker
@@ -20,12 +30,9 @@ public class ChangeMaker
         System.out.print("Enter denominations of coins (in decreasing order): ");
         for(int i = 0; i < numCoins; i++) d[i] = scanner.nextInt();
 
-        System.out.println("\nk = " + numCoins);
-        System.out.print("d array contains: ");
-        for(int i = 0; i < numCoins; i++) System.out.print(d[i] + " ");
         System.out.println();
 
-        System.out.println("\nEnter a positive amount to be changed (enter 0 to quit):");
+        System.out.println("Enter a positive amount to be changed (enter 0 to quit):");
         n = scanner.nextInt();
         while (n != 0)
         {
@@ -57,7 +64,7 @@ public class ChangeMaker
 
             /* GREEDY RESULTS */
             coinsUsed_greedy = change_greedy(n, d);
-            System.out.println("Greedy algorithm results");
+            System.out.println("\nGreedy algorithm results");
             System.out.println("Amount: " + n);
             System.out.print("Optimal distribution: ");
             plusFlag = 0;
