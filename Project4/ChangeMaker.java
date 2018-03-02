@@ -4,10 +4,8 @@ public class ChangeMaker
 {
     public static void main(String[] args)
     {
-        int numCoins, n;
-        int plusFlag = 0;
-        int sum = 0;
-        int[] d, coinsUsed;
+        int numCoins, n, plusFlag, sum_DP, sum_Greedy;
+        int[] d, coinsUsed_DP, coinsUsed_greedy;
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter number of coins: ");
@@ -27,9 +25,7 @@ public class ChangeMaker
         for(int i = 0; i < numCoins; i++) System.out.print(d[i] + " ");
         System.out.println();
 
-        System.out.println("\nFor the following, enter '0' to quit.");
-        System.out.print("Enter amount you need change for: ");
-
+        System.out.println("\nEnter a positive amount to be changed (enter 0 to quit):");
         n = scanner.nextInt();
         while (n != 0)
         {
@@ -37,46 +33,51 @@ public class ChangeMaker
                 System.out.print("Please enter change greater than 0: ");
                 n = scanner.nextInt();
                 continue;
-            } else
-                System.out.println("Seeking change for " + n + " cents");
+            }
+
+            sum_DP = 0;
+            sum_Greedy = 0;
 
             /* DP RESULTS */
-            coinsUsed = change_DP(n, d);
+            coinsUsed_DP = change_DP(n, d);
             System.out.println("\nDP algorithm results");
             System.out.println("Amount: " + n);
             System.out.print("Optimal distribution: ");
-            for (int i = 0; i < coinsUsed.length; i++){
-                if (plusFlag == 1 && coinsUsed[i] != 0)
+            plusFlag = 0;
+            for (int i = 0; i < coinsUsed_DP.length; i++){
+                if (plusFlag == 1 && coinsUsed_DP[i] != 0)
                     System.out.print(" + ");
-                if (coinsUsed[i] != 0) {
-                    System.out.print(coinsUsed[i] + "*" + d[i] + "c");
+                if (coinsUsed_DP[i] != 0) {
+                    System.out.print(coinsUsed_DP[i] + "*" + d[i] + "c");
                     plusFlag = 1;
                 }
-                sum = sum + coinsUsed[i];
+                sum_DP = sum_DP + coinsUsed_DP[i];
             }
-            System.out.println("\nOptimal coin count: " + sum);
+            System.out.println("\nOptimal coin count: " + sum_DP);
 
             /* GREEDY RESULTS */
-            coinsUsed = change_DP(n, d);
-            System.out.println("\nGreedy algorithm results");
+            coinsUsed_greedy = change_greedy(n, d);
+            System.out.println("Greedy algorithm results");
             System.out.println("Amount: " + n);
             System.out.print("Optimal distribution: ");
-            for (int i = 0; i < coinsUsed.length; i++){
-                if (plusFlag == 1 && coinsUsed[i] != 0)
+            plusFlag = 0;
+            for (int i = 0; i < coinsUsed_greedy.length; i++){
+                if (plusFlag == 1 && coinsUsed_greedy[i] != 0)
                     System.out.print(" + ");
-                if (coinsUsed[i] != 0) {
-                    System.out.print(coinsUsed[i] + "*" + d[i] + "c");
+                if (coinsUsed_greedy[i] != 0) {
+                    System.out.print(coinsUsed_greedy[i] + "*" + d[i] + "c");
                     plusFlag = 1;
                 }
-                sum = sum + coinsUsed[i];
+                sum_Greedy = sum_Greedy + coinsUsed_greedy[i];
             }
-            System.out.println("\nOptimal coin count: " + sum);
+            System.out.println("\nOptimal coin count: " + sum_Greedy);
 
             /* Reprompt user */
-            System.out.println("\nFor the following, enter '0' to quit.");
-            System.out.print("Enter amount you need change for: ");
+            System.out.println("\nEnter a positive amount to be changed (enter 0 to quit):");
             n = scanner.nextInt();
         }
+
+        System.out.println("Thanks for playing. Good Bye.");
     }
 
     /**
@@ -120,6 +121,26 @@ public class ChangeMaker
         return getCoinsUsed(result, R, d);
     }
 
+    public static int[] change_greedy(int n, int d[])
+    {
+        int result[] = new int[d.length];
+        int numCoins;
+
+        for (int i = 0; i < d.length; i++) {
+            result[i] = 0;
+            numCoins = n / d[i];
+            result[i] = numCoins;
+            n = n - (numCoins * d[i]);
+        }
+
+        if (n > 0) {
+            System.out.println("No Solution.");
+            System.exit(1);
+        }
+
+        return result;
+    }
+
     public static int[] getCoinsUsed(int result[], int R[], int d[])
     {
         int start = R.length - 1;
@@ -133,15 +154,5 @@ public class ChangeMaker
         }
 
         return result;
-    }
-
-
-
-    private static void printResults(int n, int[] d)
-    {
-        System.out.println("\nDP algorithm results");
-        System.out.println("Amount: " + n);
-        System.out.println("Optimal distribution: " + " ");
-        System.out.println("Optimal coin count: " );
     }
 }
