@@ -21,21 +21,25 @@ public class DiGraph {
    }
 
    public void addEdge(int from, int to) {
-      dirGraph[from].add(to);
+      dirGraph[from-1].add(to);
    }
 
    public void deleteEdge(int from, int to) {
-      // TO-DO
+      dirGraph[from-1].remove(to-1);
    }
 
    public int edgeCount() {
-      // TO-DO
-      return 0;
+      int edgeCount = 0;
+
+      for(int i = 0; i < dirGraph.length; i++) {
+         edgeCount += dirGraph[i].size();
+      }
+
+      return edgeCount;
    }
 
    public int vertexCount() {
-      // TO-DO
-      return 0;
+      return dirGraph.length;
    }
 
    public void print() {

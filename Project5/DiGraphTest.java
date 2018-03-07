@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class DiGraphTest {
    public static void main(String[] args) {
-      int vertices;
+      int vertices, addEdgeFrom, addEdgeTo, deleteEdgeFrom, deleteEdgeTo;
       char menuItem;
       boolean quit = false;
       Scanner scanner = new Scanner(System.in);
@@ -13,15 +13,6 @@ public class DiGraphTest {
 
       dg = new DiGraph(vertices);
 
-      dg.addEdge(0,2);
-      dg.addEdge(0,4);
-      dg.addEdge(2,2);
-      dg.addEdge(2,4);
-      dg.addEdge(2,1);
-      dg.addEdge(3,3);
-      dg.addEdge(4,3);
-      dg.addEdge(4,1);
-
       printMenu();
 
       do {
@@ -30,15 +21,23 @@ public class DiGraphTest {
          switch(menuItem) {
             case 'a': 
                System.out.println("You've chosen to addEdge");
+               System.out.print("Enter from then to numbers: ");
+               addEdgeFrom = scanner.nextInt();
+               addEdgeTo = scanner.nextInt();
+               dg.addEdge(addEdgeFrom, addEdgeTo);
                break;
             case 'd':
                System.out.println("You've chosen to deleteEdge");
+//               System.out.print("Enter from then to numbers: ");
+//               deleteEdgeFrom = scanner.nextInt();
+//               deleteEdgeTo = scanner.nextInt();
+//               dg.deleteEdge(deleteEdgeFrom, deleteEdgeTo);
                break;
             case 'e':
-               System.out.println("You've chosen to get edgeCount");
+               System.out.println("Edge Count: " + dg.edgeCount());
                break;
             case 'v':
-               System.out.println("You've chosen to get vertexCount");
+               System.out.println("Vertex Count: " + dg.vertexCount());
                break;
             case 'p':
                dg.print();
