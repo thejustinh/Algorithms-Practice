@@ -3,6 +3,8 @@ import java.util.Scanner;
 public class DiGraphTest {
    public static void main(String[] args) {
       int vertices;
+      char menuItem;
+      boolean quit = false;
       Scanner scanner = new Scanner(System.in);
       DiGraph dg;
 
@@ -20,14 +22,38 @@ public class DiGraphTest {
       dg.addEdge(4,3);
       dg.addEdge(4,1);
 
-/*      dg.dirGraph[0].add(2); dg.dirGraph[0].add(4); dg.dirGraph[0].add(8);
-      dg.dirGraph[1].add(20); dg.dirGraph[1].add(9);
-      dg.dirGraph[5].add(36); dg.dirGraph[5].add(10);
-      dg.dirGraph[9].add(108);
-*/
       printMenu();
 
-      System.out.println("\n" + dg.print());
+      do {
+         System.out.print("\nChoose menu item: ");
+         menuItem = scanner.next().charAt(0);
+         switch(menuItem) {
+            case 'a': 
+               System.out.println("You've chosen to addEdge");
+               break;
+            case 'd':
+               System.out.println("You've chosen to deleteEdge");
+               break;
+            case 'e':
+               System.out.println("You've chosen to get edgeCount");
+               break;
+            case 'v':
+               System.out.println("You've chosen to get vertexCount");
+               break;
+            case 'p':
+               dg.print();
+               break;
+            case 't':
+               System.out.println("You've chosen to sort topologically");
+               break;
+            case 'q':
+               quit = true;
+               break;
+            default:
+               System.out.println("Invalid choice.");
+         }
+      } while (!quit);
+      System.out.println("Quitting.");
    }
 
    public static void printMenu() {

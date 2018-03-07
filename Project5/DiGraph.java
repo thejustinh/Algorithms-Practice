@@ -21,7 +21,6 @@ public class DiGraph {
    }
 
    public void addEdge(int from, int to) {
-      // TO-DO
       dirGraph[from].add(to);
    }
 
@@ -39,14 +38,11 @@ public class DiGraph {
       return 0;
    }
 
-   public String print() {
-      // TO-DO
+   public void print() {
       String result = "";
       int j = 1;
       for(int i = 0; i < dirGraph.length; i++, j++) {
-         //result += j + " ==> " + dirGraph[i] + "\n";
-         result += j + " is connected to: " + dirGraph[i] + "\n";
+         System.out.println(j + " is connected to: " + dirGraph[i]);
       }
-      return result;
    }
 }
