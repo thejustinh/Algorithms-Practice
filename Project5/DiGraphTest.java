@@ -11,14 +11,23 @@ public class DiGraphTest {
 
       dg = new DiGraph(vertices);
 
-      dg.dirGraph[0].add(2); dg.dirGraph[0].add(4); dg.dirGraph[0].add(8);
+      dg.addEdge(0,2);
+      dg.addEdge(0,4);
+      dg.addEdge(2,2);
+      dg.addEdge(2,4);
+      dg.addEdge(2,1);
+      dg.addEdge(3,3);
+      dg.addEdge(4,3);
+      dg.addEdge(4,1);
+
+/*      dg.dirGraph[0].add(2); dg.dirGraph[0].add(4); dg.dirGraph[0].add(8);
       dg.dirGraph[1].add(20); dg.dirGraph[1].add(9);
       dg.dirGraph[5].add(36); dg.dirGraph[5].add(10);
       dg.dirGraph[9].add(108);
-
+*/
       printMenu();
 
-      System.out.println("\n" + dg);
+      System.out.println("\n" + dg.print());
    }
 
    public static void printMenu() {

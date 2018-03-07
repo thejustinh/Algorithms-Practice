@@ -11,7 +11,7 @@
 import java.util.*;
 
 public class DiGraph {
-   LinkedList<Integer> dirGraph[];
+   private LinkedList<Integer> dirGraph[];
 
    public DiGraph(int N) {
       this.dirGraph = new LinkedList[N];
@@ -22,6 +22,7 @@ public class DiGraph {
 
    public void addEdge(int from, int to) {
       // TO-DO
+      dirGraph[from].add(to);
    }
 
    public void deleteEdge(int from, int to) {
@@ -38,18 +39,13 @@ public class DiGraph {
       return 0;
    }
 
-   public void print() {
+   public String print() {
       // TO-DO
-   }
-
-   // just implemented to see the output
-   // overriding it is not necessary for project
-   @Override
-   public String toString() {
       String result = "";
       int j = 1;
       for(int i = 0; i < dirGraph.length; i++, j++) {
-         result += j + " ==> " + dirGraph[i] + "\n";
+         //result += j + " ==> " + dirGraph[i] + "\n";
+         result += j + " is connected to: " + dirGraph[i] + "\n";
       }
       return result;
    }
