@@ -1,4 +1,14 @@
-import java.util.Scanner;
+/*
+ * Justin Herrera
+ * jherre34@calpoly.edu
+ * Juan Ramirez
+ * jramir94@calpoly.edu
+ *
+ * Project 5
+ * Friday, March 9, 2018
+ */
+
+ import java.util.Scanner;
 
 public class DiGraphTest {
    public static void main(String[] args) {
@@ -24,29 +34,13 @@ public class DiGraphTest {
 
       while (!quit) {
 
-          /*while (true) {
-                if (scanner.hasNextLine()) {
-                    menuItem = scanner.nextLine();
+          menuItem = scanner.nextLine();
+          if (menuItem == null || menuItem.length() != 1) {
+              System.out.println("Invalid menu choice.");
+              continue;
+          }
 
-                    if (menuItem.length() != 1) {
-                        System.out.println("Invalid menu choice.");
-                        continue;
-                    }
-                    menuItem_c = menuItem.charAt(0);
-                    break;
-                }
-          }*/
-
-
-          //while (scanner.hasNextLine()) {
-              menuItem = scanner.nextLine();
-              if (menuItem == null || menuItem.length() != 1) {
-                System.out.println("Invalid menu choice.");
-                continue;
-              }
-              menuItem_c = menuItem.charAt(0);
-              //break;
-          //}
+          menuItem_c = menuItem.charAt(0);
 
           switch(menuItem_c) {
 
@@ -99,66 +93,7 @@ public class DiGraphTest {
       }
 
       System.out.println("Good bye.");
-/*
-      do {
-         System.out.print("\nChoose menu item: ");
-         menuItem = scanner.next();
 
-         if (menuItem.length() > 1) {
-            System.out.println("Invalid choice.");
-            continue;
-        }
-         menuItem_c = menuItem.charAt(0);
-
-         switch(menuItem_c) {
-            case 'a':
-               System.out.println("You've chosen to addEdge");
-               System.out.print("Enter from then to numbers: ");
-               addEdgeFrom = scanner.nextInt();
-               addEdgeTo = scanner.nextInt();
-               dg.addEdge(addEdgeFrom, addEdgeTo);
-               System.out.println("(" + addEdgeFrom + ", " +addEdgeTo + ") edge is now added to the graph");
-               break;
-            case 'd':
-               System.out.println("You've chosen to deleteEdge");
-               System.out.print("Enter from then to numbers: ");
-               deleteEdgeFrom = scanner.nextInt();
-               deleteEdgeTo = scanner.nextInt();
-               dg.deleteEdge(deleteEdgeFrom, deleteEdgeTo);
-               System.out.println("(" + deleteEdgeFrom + ", " +deleteEdgeTo + ") edge is now deleted from the graph");
-               break;
-            case 'e':
-               System.out.println("Number of edges is " + dg.edgeCount());
-               break;
-            case 'v':
-               System.out.println("Number of vertices is " + dg.vertexCount());
-               break;
-            case 'p':
-               System.out.println("The graph is the following: ");
-               dg.print();
-               break;
-            case 't':
-                try {
-                   System.out.println("You've chosen to sort topologically");
-                   sorted = dg.topSort();
-                   System.out.print("Sorted: ");
-                   if (sorted.length > 0)
-                      System.out.print(sorted[0] + 1);
-                   for (int i = 1; i < sorted.length; i++)
-                       System.out.print(", " + (sorted[i] + 1));
-                   System.out.println();
-               } catch (Exception e) {
-                   System.out.println("Cycle in graph!");
-               }
-               break;
-            case 'q':
-               quit = true;
-               break;
-            default:
-               System.out.println("Invalid choice.");
-         }
-      } while (!quit);
-      System.out.println("Good bye.");*/
   }
 
    public static void printMenu() {
