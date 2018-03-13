@@ -109,4 +109,83 @@ public class DiGraph {
 
        return A;
    }
+
+   /**
+    * Returns an array of VertexInfo type objects containing data that can be
+    * used to construct shortest paths from s vertex to all vertices in the graph
+    * that are reachable from s.
+    **/
+   private VertexInfo[] BFS(int s) {
+       int n = this.dirGraph.length;
+       VertexInfo[] VA = new VertexInfo[n];
+       Queue<Integer> Q = new LinkedList<Integer>();
+
+       for (int u = 0; u < n; u++) {
+           VertexInfo v = new VertexInfo();
+           VA[u] = v;
+           VA[u].distance = -1;
+           VA[u].predecessor = -1;
+       }
+
+       VA[s].distance = 0;
+       Q.add(s);
+
+       while (!Q.isEmpty()) {
+           int u = Q.poll();
+           for (int node = 0; node < this.dirGraph[u].size(); node++) {
+               if (VA[this.dirGraph[u].get(node)].distance == -1) {
+                   VA[this.dirGraph[u].get(node)].distance = VA[this.dirGraph[u].get(node)].distance + 1;
+                   VA[this.dirGraph[u].get(node)].predecessor = u;
+                   Q.add(this.dirGraph[u].get(node));
+               }
+           }
+       }
+
+       return VA;
+   }
+
+    public boolean isTherePath(int from, int to) {
+        VertexInfo[] VA = BFS(from - 1);
+        if (VA[to - 1].distance == -1)
+            return false;
+        return true;
+    }
+
+    public int lengthOfPath(int from, int to) {
+        int length = -1;
+        int s = from - 1;
+        int x = to - 1;
+        VertexInfo[] VA = BFS(s);
+        if (isTherePath(from, to)) {
+            length = 0;
+            while (s != x) {
+                length++;
+                x = VA[x].predecessor;
+            }
+        }
+
+        return length;
+    }
+
+    public void printPath(int from, int to) {
+        int s = from - 1;
+        int x = to - 1;
+        VertexInfo[] VA = BFS(s);
+        if (VA[x].distance == -1)
+            System.out.println("No path");
+        else {
+            String output = "";
+            while (s != x) {
+                output = "->" + x + output;
+                x = VA[x].predecessor;
+            }
+            output = s + output;
+            System.out.println(output);
+        }
+    }
+
+   private class VertexInfo {
+       public int distance;
+       public int predecessor;
+   }
 }
