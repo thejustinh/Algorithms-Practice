@@ -176,16 +176,66 @@ public class DiGraph {
         else {
             String output = "";
             while (s != x) {
-                output = "->" + x + output;
+                output = "->" + (x + 1) + output;
                 x = VA[x].predecessor;
             }
-            output = s + output;
+            output = (s + 1) + output;
             System.out.println(output);
         }
     }
 
-   private class VertexInfo {
-       public int distance;
-       public int predecessor;
-   }
+    private TreeNode buildTree(int s) {
+        VertexInfo[] VA = BFS(s - 1);
+        TreeNode[] treenodes = new TreeNode[VA.length];
+
+        TreeNode root = new TreeNode();
+        root.vertex = s - 1;
+        root.children = new LinkedList<TreeNode>();
+        treenodes[root.vertex] = root;
+        for (int i = 0; i < treenodes.length; i++) {
+            if (VA[i].predecessor != -1) {
+                // If parent hasn't been created yet, create one.
+                if (treenodes[VA[i].predecessor] == null) {
+                    TreeNode parent = new TreeNode();
+                    parent.vertex = VA[i].predecessor;
+                    parent.children = new LinkedList<TreeNode>();
+                    treenodes[parent.vertex] = parent;
+                }
+
+                // Add the current node to the predecessor's linked LinkedList
+                TreeNode newNode = new TreeNode();
+                newNode.vertex = i;
+                newNode.children = new LinkedList<TreeNode>();
+                treenodes[i] = newNode;
+                treenodes[VA[i].predecessor].children.add(treenodes[i]);
+            }
+        }
+
+        return root;
+    }
+
+    private void printTree(TreeNode root, String indent) {
+        if (root != null) {
+            System.out.println(indent + (root.vertex + 1));
+            for (int i = 0; i < root.children.size(); i++)
+                printTree(root.children.get((int) i), indent + "    ");
+        }
+    }
+
+    public void printTree(int s) {
+        TreeNode root = buildTree(s);
+        String indent = "";
+
+        printTree(root, indent);
+    }
+
+    private class VertexInfo {
+        public int distance;
+        public int predecessor;
+    }
+
+    private class TreeNode {
+        private int vertex;
+        private LinkedList<TreeNode> children;
+    }
 }

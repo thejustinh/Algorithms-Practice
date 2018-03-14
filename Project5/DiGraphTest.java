@@ -105,6 +105,11 @@ public class DiGraphTest {
                     scanner.nextLine();
                     dg.printPath(from, to);
                     break;
+                case 'b':
+                    from = scanner.nextInt();
+                    scanner.nextLine();
+                    dg.printTree(from);
+                    break;
                 case 'q':
                     quit = true;
                     break;
@@ -130,6 +135,7 @@ public class DiGraphTest {
         System.out.println("- is there path (enter i)");
         System.out.println("- length of path (enter l)");
         System.out.println("- shortest path (enter s)");
+        System.out.println("- print breadth-first-tree (enter b)");
         System.out.println("- Quit (enter q)");
     }
 }
